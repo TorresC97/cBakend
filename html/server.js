@@ -6,7 +6,11 @@ const app = express();
 
 app.set('view engine','ejs')
 
-app.use('/static',express.static('static')); //middleware
+app.use('/static',express.static('static',{
+    
+    etag: false,                             //Desactivamos la copia que genera la cache
+    maxAge: '5h'
+})); //middleware
 
 
 //Ruta inicial que responde a un docuemnto HTML
